@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="EasyEnemy.cs" />
     <Compile Include="HumanPlayer.cs" />
+    <Compile Include="Interfaces\IAiPlayer.cs" />
+    <Compile Include="Interfaces\IHumanPlayer.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

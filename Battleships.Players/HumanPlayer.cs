@@ -1,14 +1,15 @@
 ﻿using System;
 using Battleships.Board;
-using Battleships.Board.Entities;
 using Battleships.Board.Services;
 using Battleships.Players.Interfaces;
 
 namespace Battleships.Players
 {
-    public class HumanPlayer : IPlayer
+    public class HumanPlayer : IHumanPlayer
     {
+        public string Name => "Your";
         public GameBoard Board { get; set; }
+
         public void NextTurn(GameBoard opponentBoard)
         {
             Console.ReadLine();
@@ -19,7 +20,7 @@ namespace Battleships.Players
                 if (randomCell.IsHit)
                     continue;
 
-                opponentBoard.Attack(randomCell.Coordinate);
+                opponentBoard.TakeHit(randomCell.Coordinate);
                 break;
             }
         }

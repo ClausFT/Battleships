@@ -7,6 +7,11 @@ namespace Battleships.Board.Services
     {
         public static List<string> ToStringList(GameBoard board)
         {
+            return ToStringList(board, false);
+        }
+
+        public static List<string> ToStringList(GameBoard board, bool hideShips)
+        {
             var lines = new List<string> { @" \   A │ B │ C │ D │ E │ F │ G │ H │ I │ J  " };
             var lineBuilder = new StringBuilder();
 
@@ -18,16 +23,9 @@ namespace Battleships.Board.Services
                 foreach (var column in Constants.Columns)
                 {
                     var cell = board.Cells[row][column];
-                    var cellValue = "   │";
-                    //if (cell.IsOccupied)
-                    //    cellValue = $" {cell.Ship.Id} │";
-                    if (!cell.IsOccupied && cell.IsHit)
-                        cellValue = " o │"; //·
-                    if (cell.IsOccupied && cell.IsHit)
-                        cellValue = " X │";
-                    lineBuilder.Append(cellValue); //·
-
-                    //lineBuilder.Append(cell.IsOccupied ? $" {cell.Ship.Id} │" : "   │"); //·
+                    var hideShipCondition = hideShips && cell.IsOccupied && !cell.IsHit;
+                    var cellValue = hideShipCondition ? "   │" : $" {cell} │";
+                    lineBuilder.Append(cellValue);
                 }
 
                 lines.Add(lineBuilder.ToString());

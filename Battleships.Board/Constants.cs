@@ -7,10 +7,6 @@ namespace Battleships.Board
     {
         public static readonly string[] Rows = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
         public static readonly string[] Columns = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
-
-        public static readonly IShip[] Ships =
-        {
-            new Submarine(), new Submarine(), new Destroyer(), new Cruiser(), new Battleship(), new AircraftCarrier()
-        };
+        public static IShip[] Ships => new IShip[] {new Submarine(), new Submarine(), new Destroyer(), new Cruiser(), new Battleship(), new AircraftCarrier()};
     }
 }

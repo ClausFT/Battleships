@@ -17,7 +17,7 @@ namespace Battleships.Board
             Ships = new List<IShip>();
         }
 
-        public void Attack(Coordinate coordinate)
+        public void TakeHit(Coordinate coordinate)
         {
             Cells[coordinate.Row][coordinate.Column].IsHit = true;
         }

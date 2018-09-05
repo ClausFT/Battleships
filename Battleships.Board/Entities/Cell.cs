@@ -20,9 +20,13 @@ namespace Battleships.Board.Entities
             if (IsOccupied && IsHit)
                 return "X";
 
-            if (IsOccupied && IsHit)
+            if (IsOccupied)
+                return Ship.Id;
+
+            if (!IsOccupied && IsHit)
                 return "·";
-            return "";
+          
+            return " ";
         }
     }
 }

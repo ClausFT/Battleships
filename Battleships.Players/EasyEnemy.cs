@@ -4,9 +4,11 @@ using Battleships.Players.Interfaces;
 
 namespace Battleships.Players
 {
-    public class EasyEnemy : IPlayer
+    public class EasyEnemy : IAiPlayer
     {
+        public string Name => "Easy enemy";
         public GameBoard Board { get; set; }
+
         public void NextTurn(GameBoard opponentBoard)
         {
             while (true)
@@ -16,7 +18,7 @@ namespace Battleships.Players
                 if (randomCell.IsHit)
                     continue;
 
-                opponentBoard.Attack(randomCell.Coordinate);
+                opponentBoard.TakeHit(randomCell.Coordinate);
                 break;
             }
         }
